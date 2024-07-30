@@ -1,23 +1,17 @@
 import { rootRoute } from "@router";
-import { isThatMe } from "@utils/auth";
 import { currentRoute } from "@utils/routing.utils";
 import { Heading, Pane, Tab, Tablist } from "evergreen-ui";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 function App() {
   const navigate = useNavigate();
   const [activePage, setActivePage] = useState<string>(currentRoute());
-  const [isMe, setIsMe] = useState<boolean>(false);
 
   const navigateTo = (key: string, path: string) => {
     setActivePage(key);
     navigate(path);
   };
-
-  useEffect(() => {
-    isThatMe().then((isMe) => setIsMe(isMe));
-  }, []);
 
   return (
     <main>
@@ -52,7 +46,7 @@ function App() {
         </Tablist>
       </Pane>
 
-      <Heading size={700}>{isMe ? "me" : "not me"}</Heading>
+      <Heading size={700}>Testing webhooks</Heading>
 
       <Outlet key="content" />
     </main>
