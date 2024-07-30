@@ -46,8 +46,6 @@ function App() {
         </Tablist>
       </Pane>
 
-      <Heading size={700}>Testing webhooks 2</Heading>
-
       <Outlet key="content" />
     </main>
   );
